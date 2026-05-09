@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Create Task</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background:linear-gradient(to right,#fa709a,#fee140);
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .box{
+            background:white;
+            padding:40px;
+            width:400px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:25px;
+            color:#333;
+        }
+
+        input,select{
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:15px;
+        }
+
+        input:focus,
+        select:focus{
+            outline:none;
+            border:1px solid #fa709a;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            margin-top:20px;
+            background:#fa709a;
+            border:none;
+            color:white;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#f06292;
+        }
+
+        .back-link{
+            margin-top:20px;
+        }
+
+        .back-link a{
+            text-decoration:none;
+            color:#fa709a;
+            font-weight:bold;
+        }
+
+        .back-link a:hover{
+            text-decoration:underline;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Create New Task</h2>
+
+        <form action="/create_task" method="POST">
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Enter Task Title"
+                required
+            >
+
+            <input
+                type="text"
+                name="assigned_to"
+                placeholder="Assign To"
+                required
+            >
+
+            <select name="status" required>
+
+                <option value="">
+                    Select Status
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="In Progress">
+                    In Progress
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Create Task
+            </button>
+
+        </form>
+
+        <div class="back-link">
+
+            <br>
+
+            <a href="/dashboard">
+                Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

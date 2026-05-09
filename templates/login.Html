@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Task Manager Login</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background:linear-gradient(to right,#4facfe,#00f2fe);
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .box{
+            background:white;
+            width:380px;
+            padding:40px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:25px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:15px;
+        }
+
+        input:focus{
+            outline:none;
+            border:1px solid #4facfe;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            margin-top:20px;
+            background:#4facfe;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#2196f3;
+        }
+
+        .signup-link{
+            margin-top:20px;
+        }
+
+        .signup-link a{
+            text-decoration:none;
+            color:#2196f3;
+            font-weight:bold;
+        }
+
+        .signup-link a:hover{
+            text-decoration:underline;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Task Manager Login</h2>
+
+        <form action="/" method="POST">
+
+            <input 
+                type="text" 
+                name="username" 
+                placeholder="Enter Username" 
+                required
+            >
+
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="Enter Password" 
+                required
+            >
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <div class="signup-link">
+
+            <p>
+                Don't have an account?
+            </p>
+
+            <br>
+
+            <a href="/signup">
+                Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
