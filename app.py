@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, jsonify, session
 import mysql.connector
+import os
 
 app = Flask(__name__)
 
@@ -8,12 +9,12 @@ app.secret_key = "taskmanagersecret"
 
 def get_db():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="task_manager"
+        host=os.environ.get("MYSQLHOST", "localhost"),
+        user=os.environ.get("MYSQLUSER", "root"),
+        password=os.environ.get("MYSQLPASSWORD", ""),
+        database=os.environ.get("MYSQLDATABASE", "task_manager"),
+        port=int(os.environ.get("MYSQLPORT", 3306))
     )
-
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -80,7 +81,6 @@ def signup():
     return render_template("signup.html")
 
 
-
 @app.route("/dashboard")
 def dashboard():
 
@@ -124,7 +124,6 @@ def dashboard():
     )
 
 
-
 @app.route("/create_project", methods=["GET", "POST"])
 def create_project():
 
@@ -151,7 +150,6 @@ def create_project():
     return render_template("create_project.html")
 
 
-
 @app.route("/delete_project/<int:id>")
 def delete_project(id):
 
@@ -167,7 +165,6 @@ def delete_project(id):
     conn.close()
 
     return redirect("/dashboard")
-
 
 
 @app.route("/create_task", methods=["GET", "POST"])
@@ -201,7 +198,6 @@ def create_task():
     return render_template("create_task.html")
 
 
-
 @app.route("/delete_task/<int:id>")
 def delete_task(id):
 
@@ -217,7 +213,6 @@ def delete_task(id):
     conn.close()
 
     return redirect("/dashboard")
-
 
 
 @app.route("/update_status/<int:id>")
@@ -248,7 +243,6 @@ def logout():
     return redirect("/")
 
 
-
 @app.route("/api/projects")
 def api_projects():
 
@@ -264,7 +258,6 @@ def api_projects():
     return jsonify(data)
 
 
-
 @app.route("/api/tasks")
 def api_tasks():
 
@@ -278,7 +271,6 @@ def api_tasks():
     conn.close()
 
     return jsonify(data)
-
 
 
 @app.route("/api/users")
@@ -297,4 +289,7 @@ def api_users():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000))
+    )
